@@ -142,3 +142,4 @@ Scripts/
 pyvenv.cfg
 .vscode/launch.json
 .vscode/settings.json
+data/
