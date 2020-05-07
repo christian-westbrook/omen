@@ -1,3 +1,4 @@
+
 from genre_classifer.feature_extraction import beats, chromaFreq, mfcc, msps, rmse, specBandwidth, specCentroid, specRolloff, zcr
 
 import librosa
@@ -70,4 +71,4 @@ def extract(path):
     return(df)
 
 if __name__ == "__main__":
-    print(extract("data\\genres\\disco\\disco.00001.wav"))
+    print(extract("data\\1foruntoldreasonsoftheskies.mp3"))
