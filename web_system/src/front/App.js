@@ -6,9 +6,11 @@ import './App.css';
 
 function App() {
     const input = useRef();
-    const [message, setMessage] = useState('Upload an audio file to generate recommendations');
+    const [message, setMessage] = useState('Upload a .wav file to generate recommendations');
 
     const importAudio = () => {
+        setMessage('Processing... (This could take a few minutes)')
+
         let files = input.current.files;
         let file  = files[files.length - 1];
         
@@ -21,7 +23,7 @@ function App() {
         const data = new FormData();
         data.append('file', file);
         axios.post('http://' + document.domain + ':5000/generate', data, { })
-            .then(res => { setMessage(res.statusText); console.log(res);  });
+            .then(res => { setMessage(JSON.stringify(res.data)); });
     }  
 
     return (
