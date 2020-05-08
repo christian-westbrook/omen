@@ -2,6 +2,7 @@ import os
 from flask import Flask, request
 from flask_cors import CORS, cross_origin
 from extractor.singleExtract import extract
+import classifier.classify
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = './uploads'
