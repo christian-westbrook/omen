@@ -18,3 +18,11 @@ import warnings
 warnings.filterwarnings('ignore')
 
 import extractor.singleExtract as SE
+
+# Load scaler and fit to data available (Important)
+scaler = MinMaxScaler()
+training_features = pd.read_csv('./classifier/final_features.csv')
+data = training_features.drop(['number'], axis=1)
+training_data = scaler.fit_transform(np.array(data.iloc[:, 1:], dtype = float))
+# This fits the scaler to training data, and the scaler object is used on new data to scale it similarly to training data
+    
