@@ -13,6 +13,7 @@
     "babel-loader": "^8.1.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^3.5.3",
+    "file-loader": "^6.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
