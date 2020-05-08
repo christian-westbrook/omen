@@ -25,4 +25,5 @@ def hello_world():
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(filepath)
         frame = extract(filepath)
+        os.remove(filepath)
         return frame.to_dict()
