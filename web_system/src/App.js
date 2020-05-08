@@ -1,5 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
+import Button from './modules/Button.js'
+import logo from './logo.jpeg';
 import './App.css';
 
 function App() {
@@ -8,6 +9,8 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Open-source Music Recommendation Engine</p>
+        <Button enabled={true} label="Import Audio"  />
+        <br/>
         <a
           className="App-link"
           href="https://reactjs.org"
