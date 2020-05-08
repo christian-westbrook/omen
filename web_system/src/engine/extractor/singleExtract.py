@@ -1,5 +1,5 @@
 
-from genre_classifer.feature_extraction import beats, chromaFreq, mfcc, msps, rmse, specBandwidth, specCentroid, specRolloff, zcr
+from extractor.feature_extraction import beats, chromaFreq, mfcc, msps, rmse, specBandwidth, specCentroid, specRolloff, zcr
 
 import librosa
 import numpy as np
