@@ -20,8 +20,8 @@ function App() {
 
         const data = new FormData();
         data.append('file', file);
-        axios.post('http://' + document.domain + ':8000/upload', data, { })
-            .then(res => { setMessage(res.statusText);  });
+        axios.post('http://' + document.domain + ':5000/generate', data, { })
+            .then(res => { setMessage(res.statusText); console.log(res);  });
     }  
 
     return (
