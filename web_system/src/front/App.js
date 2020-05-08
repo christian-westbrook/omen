@@ -23,7 +23,15 @@ function App() {
         const data = new FormData();
         data.append('file', file);
         axios.post('http://' + document.domain + ':5000/generate', data, { })
-            .then(res => { setMessage(JSON.stringify(res.data)); });
+            .then(res => {
+                let rows = [];
+
+                console.log(Object.keys(res.data));
+                for(let key in Object.keys(res.data)) {
+                    rows.push(Object.keys(res.data)[key] + ' : ' + JSON.stringify(res.data[Object.keys(res.data)[key]]))
+                } 
+                setMessage(rows.join("\n")); 
+            });
     }  
 
     return (
