@@ -5,10 +5,10 @@ import './App.css';
 
 function App() {
     const input = useRef();
-    const [message, setMessage] = useState('Upload a .wav file to generate recommendations');
+    const [message, setMessage] = useState('Open-source Music Recommendation Engine\n\nUpload a .wav file to generate recommendations');
 
     const importAudio = () => {
-        setMessage('Processing... (This could take a few minutes)')
+        setMessage('Processing... \n\n(This could take a few minutes)')
 
         let files = input.current.files;
         let file  = files[files.length - 1];
@@ -24,11 +24,11 @@ function App() {
         axios.post('http://' + document.domain + ':5000/generate', data, { })
             .then(res => {
                 let rows = [];
-
-                console.log(Object.keys(res.data));
-                for(let key in Object.keys(res.data)) {
-                    rows.push(Object.keys(res.data)[key] + ' : ' + JSON.stringify(res.data[Object.keys(res.data)[key]]))
-                } 
+                rows.push('1. Artist : ' + res.data.artist[0] + '    Genre : ' + res.data.genre[0] + '    Track : ' + res.data.track[0])
+                rows.push('2. Artist : ' + res.data.artist[1] + '    Genre : ' + res.data.genre[1] + '    Track : ' + res.data.track[1])
+                rows.push('3. Artist : ' + res.data.artist[2] + '    Genre : ' + res.data.genre[2] + '    Track : ' + res.data.track[2])
+                rows.push('4. Artist : ' + res.data.artist[3] + '    Genre : ' + res.data.genre[3] + '    Track : ' + res.data.track[3])
+                rows.push('5. Artist : ' + res.data.artist[4] + '    Genre : ' + res.data.genre[4] + '    Track : ' + res.data.track[4])
                 setMessage(rows.join("\n")); 
             });
     }  
@@ -37,7 +37,6 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
-                <p>Open-source Music Recommendation Engine</p>
                 <label>{message}</label>
                 <br/>
                 <input ref={input} type="file" onChange={importAudio} name="upload" />
