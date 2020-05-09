@@ -3,7 +3,7 @@ from flask import Flask, request
 from flask_cors import CORS, cross_origin
 from extractor.singleExtract import extract
 from classifier.classify import classify
-import recommender.recommend
+from recommender.recommend import recommend
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = './uploads'
@@ -28,5 +28,6 @@ def hello_world():
         file.save(filepath)
         frame = extract(filepath)
         prediction = classify(frame)
+        recommendations = recommend(prediction)
         os.remove(filepath)
-        return prediction.to_dict()
+        return recommendations.to_dict()
