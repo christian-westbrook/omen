@@ -2,7 +2,7 @@ import os
 from flask import Flask, request
 from flask_cors import CORS, cross_origin
 from extractor.singleExtract import extract
-import classifier.classify
+from classifier.classify import classify
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = './uploads'
@@ -26,5 +26,6 @@ def hello_world():
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(filepath)
         frame = extract(filepath)
+        prediction = classify(frame)
         os.remove(filepath)
-        return frame.to_dict()
+        return prediction.to_dict()
